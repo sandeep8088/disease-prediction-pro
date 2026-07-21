@@ -9,7 +9,12 @@ import streamlit as st
 
 from recommend import DiseaseInfo
 
-st.set_page_config(page_title="Disease Prediction System", page_icon="🩺", layout="centered")
+st.set_page_config(
+    page_title="Disease Prediction System",
+    page_icon="🩺",
+    layout="centered",
+    menu_items={"Get Help": None, "Report a bug": None, "About": None},
+)
 
 MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model")
 
