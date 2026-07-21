@@ -11,7 +11,7 @@ from recommend import DiseaseInfo
 
 st.set_page_config(page_title="Disease Prediction System", page_icon="🩺", layout="centered")
 
-MODEL_DIR = "model"
+MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model")
 
 
 @st.cache_resource
