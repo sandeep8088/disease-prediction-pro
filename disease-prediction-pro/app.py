@@ -33,10 +33,6 @@ def pretty(symptom: str) -> str:
 symptom_display_map = {pretty(s): s for s in feature_cols}
 
 st.title("🩺 Disease Prediction System")
-st.caption(
-    "Trained on a 4,920-record clinical symptom dataset (132 symptoms → 41 diseases). "
-    "**Educational demo — not a substitute for professional medical advice.**"
-)
 
 selected_display = st.multiselect(
     "Select your symptoms:",
@@ -95,24 +91,4 @@ if st.button("Predict", type="primary"):
             "This tool is for educational purposes only and does not replace "
             "professional medical diagnosis. Please consult a doctor for any "
             "health concerns."
-        )
-
-with st.expander("How this works"):
-    metrics_path = os.path.join(MODEL_DIR, "metrics.json")
-    if os.path.exists(metrics_path):
-        import json
-        with open(metrics_path) as f:
-            m = json.load(f)
-        st.write(
-            f"**Model:** {m['best_model']}  \n"
-            f"**Training data:** {m['n_records']} records, {m['n_features']} symptoms, "
-            f"{m['n_classes']} diseases  \n"
-            f"**Held-out test accuracy:** {m['held_out_test_accuracy']:.1%}"
-        )
-        st.caption(
-            "Note: this public dataset assigns each disease a fixed, non-overlapping "
-            "symptom combination, so near-perfect accuracy here reflects the dataset's "
-            "structure rather than real-world diagnostic performance. Real clinical "
-            "presentations overlap far more and would need a larger, noisier dataset "
-            "and a properly validated model before any real use."
         )
